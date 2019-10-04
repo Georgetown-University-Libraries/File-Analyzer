@@ -32,7 +32,8 @@ import org.xml.sax.helpers.DefaultHandler;
 class PageCount extends DefaultFileTest { 
 	private static enum PagesStatsItems implements StatsItemEnum {
 		Key(StatsItem.makeStringStatsItem("Path", 200)),
-		Pages(StatsItem.makeIntStatsItem("Pages"))
+		Pages(StatsItem.makeIntStatsItem("Pages")),
+		PdfVer(StatsItem.makeStringStatsItem("PdfVer"))
 		;
 		
 		StatsItem si;
@@ -105,6 +106,7 @@ class PageCount extends DefaultFileTest {
                 e.printStackTrace();
             }
 			s.setVal(PagesStatsItems.Pages, x);
+			s.setVal(PagesStatsItems.PdfVer, m.get("pdf:PDFVersion"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
